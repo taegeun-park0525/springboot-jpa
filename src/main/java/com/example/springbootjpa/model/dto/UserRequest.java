@@ -6,10 +6,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Builder
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 public class UserRequest {
     private String username;
     private String password;
+
+    public User toEntity() {
+        return User.builder()
+                .username(this.username)
+                .password(this.password)
+                .build();
+    }
 }
